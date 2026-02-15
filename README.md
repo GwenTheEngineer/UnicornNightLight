@@ -10,7 +10,7 @@ This project brings to life the following vision for a table-top night light
 
 ![Unicorn Nightlght Assembly](images/freecad_assembly.png)
 
-## Process
+## Research and Development
 
 ### Conceptual Design
 
@@ -26,7 +26,7 @@ First, I needed a mechanism that could convert angular movement to linear moveme
 
 My hardware-adjacent and hobby background helped here. I hopped on amazon to find a low speed motor, appropriate transformers and adapters, and some LEDs and heat sinks. If you don't see the BOM when you're reading this, it will be up soon.
 
-#### Bringing it all Together
+### Detailed Mechanical Design
 
 ##### CAD
 
