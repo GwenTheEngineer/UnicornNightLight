@@ -8,6 +8,8 @@ This project brings to life the following vision for a table-top night light
 * Moves up and down .... but *not* in circles (to avoid the user getting dizzy)
 * Preferably rainbow colored
 
+![Unicorn Nightlght Assembly](images/freecad_assembly.png)
+
 ## Process
 
 ### Conceptual Design
@@ -84,3 +86,19 @@ You don't actually need your own 3D printer; there is a growing number of public
 ### Electrical Components
 
 BOM coming soon
+
+## License
+
+Unless otherwise noted, the documentation, images, and written content in this project are licensed under the Attribution-NonCommercial-ShareAlike 4.0 International.
+
+You are free to share and adapt this material for any non-commercial purpose, as long as you give appropriate credit.
+
+## Disclaimer
+
+This project is provided for educational and informational purposes only.
+
+You assume all responsibility and risk for using the information, code, hardware designs, and instructions provided here. I make no guarantees regarding safety, reliability, or suitability for any purpose.
+
+By attempting this project, you agree that I am not liable for any injury, damage, loss, or other issues that may occur as a result of building or using this project.
+
+*Always follow proper safety practices when working with electronics, tools, and power sources.*
