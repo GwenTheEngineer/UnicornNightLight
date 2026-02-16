@@ -1,7 +1,12 @@
 # Unicorn Night Light
 
+This is the first time I've documented and open-sourced a weekend project!  
+
+If this project is helpful, you can support future side quests ☕
+https://buymeacoffee.com/GwenTheEngineer
+
 ## Idea
-This project brings to life the following vision for a table-top night light
+This project brings to life the following vision for a table-top night light.
 
 * Unicorn shaped shell
 * Star shaped holes (through which the light will project)
@@ -28,11 +33,11 @@ My hardware-adjacent and hobby background helped here. I hopped on amazon to fin
 
 ### Detailed Mechanical Design
 
-##### CAD
+#### CAD
 
-I'm an engineer, but not *this* kind of engineer (professionally, at least). I did play with meshes in grad school, and CAD for mechanical design as an undergrad, but I was SUPER rusty when I started this project.
+I'm an engineer, but not *this* kind of engineer (professionally, at least). I did play with meshes in grad school, and CAD for mechanical design as an undergrad, but I was rusty when I started this project.
 
-###### Tl;dr
+#### Tl;dr
 
 * I used FreeCAD (https://www.freecad.org/), Blender  (https://www.blender.org/), and Tinkercad (https://www.tinkercad.com/)
 * Blender for mesh coarsening (in order to import the unicorn head mesh into FreeCAD and Tinkercad)
@@ -40,12 +45,13 @@ I'm an engineer, but not *this* kind of engineer (professionally, at least). I d
 * Tinkercad for booleam operations (i.e., actually subtracting the hole from the shell; adding the star holes)
 * FreeCAD to ensure mechanical fit of the crank parts and motor mount and extending the slider / attaching it to the outer unicorn head shell
 * Tinkercad for final adjustments (adding a collar, subtracting the base, making the hole to attach the slider column to the unicorn shell)
-* Blender to bisect the unicorn head in order to fit it on my printer (a Prusa Mini)
+* Blender to bisect the unicorn head in order to fit it on my printer (a Prusa Mini) -- See notes; this was a fun exercise but did not turn out to be necessary
 
-###### Play by Play
-This turned out to be more complicated than I had originally envisioned.
+#### Play by Play
+##### Outer Shell
+Like most projects, this turned out to be more complicated than I had originally envisioned. (Engineers are notoriously bad at estimating).
 
-CAD tools are expensive, especially the professional ones. My favorite tool for small projects because it's very easy to use is tinkercad (online-only tool from the makers of AutoCad).
+Professional CAD tools are expensive. My favorite tool for small projects because it's very easy to use is tinkercad (online-only tool from the makers of AutoCad), free for individual and educational purposes.
 
 For this project, that wouldn't work because the unicorn mesh was too big. After some research, I selected FreeCAD. Don't forget to leave a donation!
 
@@ -57,19 +63,38 @@ Next pain point was converting the unicorn shell to a solid in order to subtract
 
 But! Now I could import both parts into tinkercad and cut the hole out that way! So I decided to make the full shell in tinkercad, and return to FreeCAD (which I do want to learn) for the moving parts.
 
-Back to free cad to adapt the crank parts!
+Back to FreeCAD to adapt the crank parts!
 
 I imported the crank parts separately and "assembled" them for sense of scale. The general plan was to fit them in then scale the unicorn if necessary to make more room. I decided I would add mounts for the PCBs and LEDs later once all of the moving parts were put together. (Or, just wedge them in for now and come back to that in the next rev).
 
 I needed one last import into free cad to cut the base out of the unicorn when all measurements were finalized. I scaled the unicorn up slightly from the original, and added a "cup" at the bottom to wedge PCBs and wires into.
 
-One more round trop from FreeCAD Tinkercad to get the hole at the bottom correctly sized; I had to add a collar (I just did this in tinkercad) to maintain the wall thickess.
+One more round trop from FreeCAD Tinkercad to get the hole at the bottom correctly sized; I had to add a collar (I just did this in Tinkercad) to maintain the wall thickess.
 
-Finally! I split the unicorn by plans and went to plate it ... totally forgetting that I needed to have the edges filled (with the cutout, it's just 2 nested meshes.)
+Finally! I split the unicorn by planes (in FreeCAD) and went to plate it ... forgetting that I needed to have the edges filled (with the cutout, it's just 2 nested meshes.) CAD programs generally aren't great at mesh editing. Back to Blender.
 
 This article was useful: https://blender.stackexchange.com/questions/338870/bisect-separate-move. Don't forget to select "Fill" when you're bisecting. 
 
 I rearranged the resulting objects into 2 collections, and duplicated the new faces in each collection, then, I went back to object mode and joined all objects, and then back to merge the meshes by distance (this removed a few hundred vertices each time).
+
+##### Finalizing the Crank
+Once the motors came in, I measured the shaft diameter at 3mm, with a flat face about 2mm wide. I then proceeded to accidentally use 3mm as the radius when updating the hole in the crank. F. This had to be redone.
+
+#### Error Log (Learning!)
+
+##### Printing Orientation
+
+Initially I thought of printing the unicorn on its side for 2 reasons (1) to fit on the build plate and (2) to minimize support material not directly on the build plate; i.e. to avoid digging support material out of the unicorns nose. The unicorn's horn did not stick to the plate -- it lifted. Also, the filament I'm using is rainbow -- so printing each side separately would cause a weird discontinuity in the rainbow. Since I had to bisect the head twice (X and Z planes) to fit anyways, I might as well try printing from the bottom up.... back to Blender. I also adjusted the settings (angle) when computing necessary support material.
+
+I reduced the angle to 45% and swapped to organic support (which is often easier to remove).
+
+##### Blender Hanging Splitting Loose Parts
+
+The number of time Blender hung after bisect --> split faces by edges --> separate loose parts was frustrating. For some reason, it was trying to split ALL of the triangles into separate parts. This seemed to happen consistently when I bisected in the Z-plane (top from bottom) first.
+
+In the end, I realized I could just print the whole unicorn, so went with this option (better for rainbow filament continuity).
+
+The best work-around I found was duplicating the mesh and bisecting each instance; keeping the inner on one and outer on the other.
 
 ## Resources
 
@@ -89,7 +114,7 @@ BOM coming soon
 
 ## License
 
-Unless otherwise noted, the documentation, images, and written content in this project are licensed under the Attribution-NonCommercial-ShareAlike 4.0 International.
+Unless otherwise noted, the documentation, images, and written content in this project are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
 You are free to share and adapt this material for any non-commercial purpose, as long as you give appropriate credit.
 
