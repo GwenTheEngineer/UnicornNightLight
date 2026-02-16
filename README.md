@@ -1,9 +1,12 @@
 # Unicorn Night Light
 
-This is the first time I've documented and open-sourced a weekend project!  
+This is the first time I've documented and open-sourced a weekend project!
+
 
 If this project is helpful, you can support future side quests ☕
 https://buymeacoffee.com/GwenTheEngineer
+
+[YouTube playlist](https://www.youtube.com/playlist?list=PLPH9-bBXNwrTy-LLMLCjv-cOZETsQUVa1) for this project.
 
 ## Idea
 This project brings to life the following vision for a table-top night light.
