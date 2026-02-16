@@ -97,7 +97,7 @@ Initially I thought of printing the unicorn on its side for 2 reasons (1) to fit
 
 *I reduced the angle to 45 degrees and swapped to organic support (which is often easier to remove).*
 
-<img src="images/bad_unicorn.jpg" width="60%" alt="bad unicorn">
+![Unicorn Nightlght Assembly](images/bad_unicorn.jpg){width=50%}
 
 ##### Blender Hanging Splitting Loose Parts
 
