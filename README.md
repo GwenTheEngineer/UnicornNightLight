@@ -15,29 +15,33 @@ This project brings to life the following vision for a table-top night light.
 
 ![Unicorn Nightlght Assembly](images/freecad_assembly.png)
 
-## Research and Development
-
-### Conceptual Design
+## Conceptual Design
 
 A back of the envelope sketch of the vision! Doesn't need to be perfect, just needs to communicate what we want to accomplish. 
 
-### Research
+## Research
 
-#### Printable Parts
+### Printable Parts
 
 First, I needed a mechanism that could convert angular movement to linear movement...but I didn't know the right word for it. So I googled. Turns out, the word is "crank". Then, because my CAD skills are pretty elementary, I searched by go-to resource (printables.com) for a model that would work as a starting point -- with some resizing and adjusting to accommodate the motor shaft.
 
-#### Electrical and Mechanical
+### Electrical and Mechanical
 
-My hardware-adjacent and hobby background helped here. I hopped on amazon to find a low speed motor, appropriate transformers and adapters, and some LEDs and heat sinks. If you don't see the BOM when you're reading this, it will be up soon.
+My hardware-adjacent and hobby background helped here. I hopped on amazon to find a low speed motor, appropriate transformers and adapters, and some LEDs and heat sinks. The complete BOM is listed below.
 
-### Detailed Mechanical Design
+Key considerations if you're shopping for your own parts:
+* Motor size and speed -- I wanted something small (to fit inside) and low speed.
+* Power supply -- wall sockets are AC; almost all hobby parts need DC
+* Match voltages -- motor calls for 3.3-5V; you may need to step down your voltage after you transform AC-->DC
+* Heat -- heat sinks help keep the temperature down. 
 
-#### CAD
+## Detailed Mechanical Design
+
+### CAD
 
 I'm an engineer, but not *this* kind of engineer (professionally, at least). I did play with meshes in grad school, and CAD for mechanical design as an undergrad, but I was rusty when I started this project.
 
-#### Tl;dr
+### Tl;dr
 
 * I used FreeCAD (https://www.freecad.org/), Blender  (https://www.blender.org/), and Tinkercad (https://www.tinkercad.com/)
 * Blender for mesh coarsening (in order to import the unicorn head mesh into FreeCAD and Tinkercad)
@@ -47,8 +51,8 @@ I'm an engineer, but not *this* kind of engineer (professionally, at least). I d
 * Tinkercad for final adjustments (adding a collar, subtracting the base, making the hole to attach the slider column to the unicorn shell)
 * Blender to bisect the unicorn head in order to fit it on my printer (a Prusa Mini) -- See notes; this was a fun exercise but did not turn out to be necessary
 
-#### Play by Play
-##### Outer Shell
+### Play by Play
+#### Outer Shell
 Like most projects, this turned out to be more complicated than I had originally envisioned. (Engineers are notoriously bad at estimating).
 
 Professional CAD tools are expensive. My favorite tool for small projects because it's very easy to use is tinkercad (online-only tool from the makers of AutoCad), free for individual and educational purposes.
@@ -77,8 +81,13 @@ This article was useful: https://blender.stackexchange.com/questions/338870/bise
 
 I rearranged the resulting objects into 2 collections, and duplicated the new faces in each collection, then, I went back to object mode and joined all objects, and then back to merge the meshes by distance (this removed a few hundred vertices each time).
 
-##### Finalizing the Crank
-Once the motors came in, I measured the shaft diameter at 3mm, with a flat face about 2mm wide. I then proceeded to accidentally use 3mm as the radius when updating the hole in the crank. F. This had to be redone.
+#### Finalizing the Crank
+First, I cleaned up the original mesh by removing the tab meant to demonstrate the part manually. I did this in Blender, but probably could have converted to a solid in FreeCAD and made the updates there, since it's a pretty simple mesh. 
+
+After the motors came in, I measured the shaft diameter at 3mm, with a flat face about 2mm wide. I then proceeded to accidentally use 3mm as the radius when updating the hole in the crank. F. This had to be redone. On the bright side I only had to fix the hole in the crank, because the default size for the part attached to the base was just about right (I'll file it down after it prints if it's an issue).
+
+#### Finalizing the Base
+We need to punch a hole for the power cord to go through!
 
 #### Error Log (Learning!)
 
@@ -86,7 +95,9 @@ Once the motors came in, I measured the shaft diameter at 3mm, with a flat face 
 
 Initially I thought of printing the unicorn on its side for 2 reasons (1) to fit on the build plate and (2) to minimize support material not directly on the build plate; i.e. to avoid digging support material out of the unicorns nose. The unicorn's horn did not stick to the plate -- it lifted. Also, the filament I'm using is rainbow -- so printing each side separately would cause a weird discontinuity in the rainbow. Since I had to bisect the head twice (X and Z planes) to fit anyways, I might as well try printing from the bottom up.... back to Blender. I also adjusted the settings (angle) when computing necessary support material.
 
-I reduced the angle to 45% and swapped to organic support (which is often easier to remove).
+*I reduced the angle to 45 degrees and swapped to organic support (which is often easier to remove).*
+
+<img src="images/bad_unicorn.jpg" width="60%" alt="bad unicorn">
 
 ##### Blender Hanging Splitting Loose Parts
 
@@ -108,9 +119,19 @@ Unicorn Head: https://www.printables.com/model/1155402-unicorn-head
 
 You don't actually need your own 3D printer; there is a growing number of public libraries, schools, and maker spaces where you can find them.
 
-### Electrical Components
+### Electrical Components BOM
 
-BOM coming soon
+These are affiliate links to fund a small percentage of reaching my Balmer peak (3-5% commission, depending on the part). Yay late stage capitalism. Let me know if you have a better resource and want to give Bezos less if your money.
+
+As of this writing I have not tested any of these, so the list may change. I'll remove this comment when this is final.
+
+* Low speed (tiny) motors: https://amzn.to/4qAXlMr
+* LEDs: https://amzn.to/469XHT5
+* Heat sinks: https://amzn.to/3ZFIS6Y
+* DC PWM for motor or brightness control: https://amzn.to/46djYiJ
+* DC Step down transformer: https://amzn.to/4tE2aY7
+* Universal AC Adapter: https://amzn.to/4azepfL
+
 
 ## License
 
