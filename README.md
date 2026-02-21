@@ -112,9 +112,11 @@ The best work-around I found was duplicating the mesh and bisecting each instanc
 
 ##### Holes, Mounts, and Tolerances
 
-The motor shaft did not fit through the center holes on the crank. I went back to FreeCAD and made them 1.5mm wider. The hole on the crank mount was also too low by 1-2mm, so I moved that whole part up.
+The motor shaft did not fit through the center holes on the crank. I went back to FreeCAD and made them 1.5mm wider. The hole on the crank mount was also too low by 1-2mm, so I moved that whole part up. I also upped the size of the holes in the crank's rod to reduce the amount of sanding I would need to do on the other crank parts to get a smooth motion.
 
-Finally, I moved the motor mount a few mm closer to the crank mount to ensure the shaft would go through to the crank mount.
+In further facepalm-inducing mistakes, I computed the column height (the column connects the slider to the unicorn head) from the *top* position of the slider -- which meant it was several centimeters to short. This part also had to be redone.
+
+Finally, I moved the motor mount a few millimeters closer to the crank mount to ensure the shaft would go through to the crank mount.
 
 ## Resources
 
