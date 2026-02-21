@@ -33,7 +33,7 @@ First, I needed a mechanism that could convert angular movement to linear moveme
 My hardware-adjacent and hobby background helped here. I hopped on amazon to find a low speed motor, appropriate transformers and adapters, and some LEDs and heat sinks. The complete BOM is listed below.
 
 Key considerations if you're shopping for your own parts:
-* Motor size and speed -- I wanted something small (to fit inside) and low speed.
+* Motor size and speed -- I wanted something small (to fit inside) and low speed, but high enough torque to deal with the weight of the head and friction of the crank.
 * Power supply -- wall sockets are AC; almost all hobby parts need DC
 * Match voltages -- motor calls for 3.3-5V; you may need to step down your voltage after you transform AC-->DC
 * Heat -- heat sinks help keep the temperature down. 
@@ -52,7 +52,8 @@ I'm an engineer, but not *this* kind of engineer (professionally, at least). I d
 * Tinkercad for booleam operations (i.e., actually subtracting the hole from the shell; adding the star holes)
 * FreeCAD to ensure mechanical fit of the crank parts and motor mount and extending the slider / attaching it to the outer unicorn head shell
 * Tinkercad for final adjustments (adding a collar, subtracting the base, making the hole to attach the slider column to the unicorn shell)
-* Blender to bisect the unicorn head in order to fit it on my printer (a Prusa Mini) -- See notes; this was a fun exercise but did not turn out to be necessary
+* FreeCAD for tweaking hole sizes to fit the motor and adding a through hole for the power cable to the base.
+* ~~Blender to bisect the unicorn head in order to fit it on my printer (a Prusa Mini) -- See notes; this was a fun exercise but did not turn out to be necessary~~
 
 ### Play by Play
 #### Outer Shell
@@ -76,7 +77,7 @@ I imported the crank parts separately and "assembled" them for sense of scale. T
 
 I needed one last import into free cad to cut the base out of the unicorn when all measurements were finalized. I scaled the unicorn up slightly from the original, and added a "cup" at the bottom to wedge PCBs and wires into.
 
-One more round trop from FreeCAD Tinkercad to get the hole at the bottom correctly sized; I had to add a collar (I just did this in Tinkercad) to maintain the wall thickess.
+One more round trop from FreeCAD to Tinkercad to get the hole at the bottom correctly sized; I had to add a collar (I just did this in Tinkercad) to maintain the wall thickness.
 
 Finally! I split the unicorn by planes (in FreeCAD) and went to plate it ... forgetting that I needed to have the edges filled (with the cutout, it's just 2 nested meshes.) CAD programs generally aren't great at mesh editing. Back to Blender.
 
@@ -85,38 +86,19 @@ This article was useful: https://blender.stackexchange.com/questions/338870/bise
 I rearranged the resulting objects into 2 collections, and duplicated the new faces in each collection, then, I went back to object mode and joined all objects, and then back to merge the meshes by distance (this removed a few hundred vertices each time).
 
 #### Finalizing the Crank
-First, I cleaned up the original mesh by removing the tab meant to demonstrate the part manually. I did this in Blender, but probably could have converted to a solid in FreeCAD and made the updates there, since it's a pretty simple mesh. 
 
-After the motors came in, I measured the shaft diameter at 3mm, with a flat face about 2mm wide. I then proceeded to accidentally use 3mm as the radius when updating the hole in the crank. F. This had to be redone. On the bright side I only had to fix the hole in the crank, because the default size for the part attached to the base was just about right (I'll file it down after it prints if it's an issue).
+~~First, I cleaned up the original mesh by removing the tab meant to demonstrate the part manually. I did this in Blender, but probably could have converted to a solid in FreeCAD and made the updates there, since it's a pretty simple mesh.~~  (see error log; this was actually not meant for fingers, it was a necessary part)
+
+After the motors came in, I measured the shaft diameter at 3mm, with a flat face about 2mm wide. I then proceeded to accidentally use 3mm as the radius when updating the hole in the crank. F. This had to be redone. ~~On the bright side I only had to fix the hole in the crank, because the default size for the part attached to the base was just about right (I'll file it down after it prints if it's an issue).~~
+
+I went ahead and made all of the holes bigger (1.8-2mm radius; see parts for details) for a better fit and reduce the amount of sanding I'd need to do for the mechanism to be smooth.
+
+Finally, after the first print -- I realize the slider mount needed to be flipped (:facepalm:). In the original orientation, the motor shaft would have interfered with the rod of the crank. To accomplish this in FreeCAD without changing the position of the column relative to the base, I placed the slider+column part directly over the crank to fit part, then rotated and adjusted the parts until the columns were overlapping the the crank was flipped 180 degrees relative to the motor mount.
+
+I also extended the column by about 2cm to correct for the error of measuring the original height from slider's top position instead of the bottom. Oops.
 
 #### Finalizing the Base
 We need to punch a hole for the power cord to go through!
-
-#### Error Log (Learning!)
-
-##### Printing Orientation
-
-Initially I thought of printing the unicorn on its side for 2 reasons (1) to fit on the build plate and (2) to minimize support material not directly on the build plate; i.e. to avoid digging support material out of the unicorns nose. The unicorn's horn did not stick to the plate -- it lifted. Also, the filament I'm using is rainbow -- so printing each side separately would cause a weird discontinuity in the rainbow. Since I had to bisect the head twice (X and Z planes) to fit anyways, I might as well try printing from the bottom up.... back to Blender. I also adjusted the settings (angle) when computing necessary support material.
-
-*I reduced the angle to 45 degrees and swapped to organic support (which is often easier to remove).*
-
-![Unicorn Nightlght Assembly](images/bad_unicorn.jpg)
-
-##### Blender Hanging Splitting Loose Parts
-
-The number of time Blender hung after bisect --> split faces by edges --> separate loose parts was frustrating. For some reason, it was trying to split ALL of the triangles into separate parts. This seemed to happen consistently when I bisected in the Z-plane (top from bottom) first.
-
-In the end, I realized I could just print the whole unicorn, so went with this option (better for rainbow filament continuity).
-
-The best work-around I found was duplicating the mesh and bisecting each instance; keeping the inner on one and outer on the other.
-
-##### Holes, Mounts, and Tolerances
-
-The motor shaft did not fit through the center holes on the crank. I went back to FreeCAD and made them 1.5mm wider. The hole on the crank mount was also too low by 1-2mm, so I moved that whole part up. I also upped the size of the holes in the crank's rod to reduce the amount of sanding I would need to do on the other crank parts to get a smooth motion.
-
-In further facepalm-inducing mistakes, I computed the column height (the column connects the slider to the unicorn head) from the *top* position of the slider -- which meant it was several centimeters to short. This part also had to be redone.
-
-Finally, I moved the motor mount a few millimeters closer to the crank mount to ensure the shaft would go through to the crank mount.
 
 ## Resources
 
@@ -130,18 +112,22 @@ Unicorn Head: https://www.printables.com/model/1155402-unicorn-head
 
 You don't actually need your own 3D printer; there is a growing number of public libraries, schools, and maker spaces where you can find them.
 
-### Electrical Components BOM
+### BOM
 
 These are affiliate links to fund a small percentage of reaching my Balmer peak (3-5% commission, depending on the part). Yay late stage capitalism. Let me know if you have a better resource and want to give Bezos less if your money.
 
 As of this writing I have not tested any of these, so the list may change. I'll remove this comment when this is final.
 
+#### Electical Components
 * Low speed (tiny) motors: https://amzn.to/4qAXlMr
 * LEDs: https://amzn.to/469XHT5
 * Heat sinks: https://amzn.to/3ZFIS6Y
 * DC PWM for motor or brightness control: https://amzn.to/46djYiJ
 * DC Step down transformer: https://amzn.to/4tE2aY7
 * Universal AC Adapter: https://amzn.to/4azepfL
+
+#### Useful Tools
+* Nail kit (useful for cleaning up support material from meshes): https://amzn.to/4s3IJGH
 
 
 ## License
@@ -159,3 +145,31 @@ You assume all responsibility and risk for using the information, code, hardware
 By attempting this project, you agree that I am not liable for any injury, damage, loss, or other issues that may occur as a result of building or using this project.
 
 *Always follow proper safety practices when working with electronics, tools, and power sources.*
+
+## Error Log (Learning!)
+
+### Printing Orientation
+
+Initially I thought of printing the unicorn on its side for 2 reasons (1) to fit on the build plate and (2) to minimize support material not directly on the build plate; i.e. to avoid digging support material out of the unicorns nose. The unicorn's horn did not stick to the plate -- it lifted. Also, the filament I'm using is rainbow -- so printing each side separately would cause a weird discontinuity in the rainbow. Since I had to bisect the head twice (X and Z planes) to fit anyways, I might as well try printing from the bottom up.... back to Blender. I also adjusted the settings (angle) when computing necessary support material.
+
+*I reduced the angle to 45 degrees and swapped to organic support (which is often easier to remove).*
+
+![Unicorn Nightlght Assembly](images/bad_unicorn.jpg)
+
+### Blender Hanging Splitting Loose Parts
+
+The number of time Blender hung after bisect --> split faces by edges --> separate loose parts was frustrating. For some reason, it was trying to split ALL of the triangles into separate parts. This seemed to happen consistently when I bisected in the Z-plane (top from bottom) first.
+
+In the end, I realized I could just print the whole unicorn, so went with this option (better for rainbow filament continuity).
+
+The best work-around I found was duplicating the mesh and bisecting each instance; keeping the inner on one and outer on the other.
+
+### Holes, Orientations, Mounts, and Tolerances
+
+The motor shaft did not fit through the center holes on the crank. I went back to FreeCAD and made them 1.5mm wider. The hole on the crank mount was also too low by 1-2mm, so I moved that whole part up. I also upped the size of the holes in the crank's rod to reduce the amount of sanding I would need to do on the other crank parts to get a smooth motion.
+
+In further facepalm-inducing mistakes, I computed the column height (the column connects the slider to the unicorn head) from the *top* position of the slider -- which meant it was several centimeters to short. This part also had to be redone.
+
+Finally, the crank was actually backwards. The motor shaft and rod would interfere with each other. Oops.
+
+![Unicorn Nightlght Assembly](images/all_the_errors.jpg)
