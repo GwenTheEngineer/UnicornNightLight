@@ -128,6 +128,7 @@ As of this writing I have not tested any of these, so the list may change. I'll 
 
 #### Useful Tools
 * Nail kit (useful for cleaning up support material from meshes): https://amzn.to/4s3IJGH
+* Small electronics shopping cart (solder, wires, etc.). This is similar to what I've accumulated: https://amzn.to/4tOZ03W
 
 
 ## License
