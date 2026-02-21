@@ -100,7 +100,7 @@ Initially I thought of printing the unicorn on its side for 2 reasons (1) to fit
 
 *I reduced the angle to 45 degrees and swapped to organic support (which is often easier to remove).*
 
-![Unicorn Nightlght Assembly](images/bad_unicorn.jpg){width=50%}
+![Unicorn Nightlght Assembly](images/bad_unicorn.jpg)
 
 ##### Blender Hanging Splitting Loose Parts
 
@@ -109,6 +109,12 @@ The number of time Blender hung after bisect --> split faces by edges --> separa
 In the end, I realized I could just print the whole unicorn, so went with this option (better for rainbow filament continuity).
 
 The best work-around I found was duplicating the mesh and bisecting each instance; keeping the inner on one and outer on the other.
+
+##### Holes, Mounts, and Tolerances
+
+The motor shaft did not fit through the center holes on the crank. I went back to FreeCAD and made them 1.5mm wider. The hole on the crank mount was also too low by 1-2mm, so I moved that whole part up.
+
+Finally, I moved the motor mount a few mm closer to the crank mount to ensure the shaft would go through to the crank mount.
 
 ## Resources
 
