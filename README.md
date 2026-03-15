@@ -107,9 +107,12 @@ I also extended the column by about 2cm to correct for the error of measuring th
 I extended the slider mount and add a second bearing to limit the moment induced by the unicorn head on the slider. When mounted, it was pulling the crank off of the motor shaft.
 
 ###### Rework #3 - swap drive train; update parts accordingly
-This was a pretty extensive rework. With everything wired up and the unicorn going slowly up and down (per the spec), the square hold at the center of the crank (printed with PLA) warped enough that the motors shaft started slipping. In retrospect, given the weight of the head and the nature of PLA, this was, in fact, foreseeable.
+This was a pretty extensive rework. It involved updating the model to accommodate
+(1) a gear attached to the end of the motor shaft, 
+(2) a through-hole for the 2nd gear which will actually drive the crank, and
+(3) adaptation of the crank parts to attach to a 3rd gear to drive the slider.
 
-I needed a harder material; either metal or a different plastic (and preferably not too expensive). The solution: RC car parts!
+I did a save-as before starting this (new file is `unicorm_lamp_gears.FCStd`)
 
 
 ## Resources
@@ -134,8 +137,7 @@ As of this writing I have not tested any of these, so the list may change. I'll 
 * Low speed (tiny) motors: https://amzn.to/4qAXlMr
 * LEDs: https://amzn.to/469XHT5
 * Heat sinks: https://amzn.to/3ZFIS6Y
-* DC Voltage regulator: https://amzn.to/4qSYteF
-* DC Step down transformer: https://amzn.to/4tE2aY7
+* DC Low Voltage Speed Controller: https://amzn.to/4qSYteF
 * Universal AC Adapter: https://amzn.to/4azepfL
 
 #### Useful Tools
@@ -192,3 +194,12 @@ Finally, the crank was actually backwards. The motor shaft and rod would interfe
 Hindsight is always 20/20. With the base assembled, I was initially please with the fit of the motor shaft into the crank. The mechanism moved up and down about as smoothly as one would expect from PLA parts. HOWEVER, when the shell was placed on top, there was enough of a moment to pull the crank off of the shaft, even with the addition of glue.
 
 This caused another re-work of the base (slider mount) and slider. I increased the width of the slider column so it sits closer to the mount, and added a second bearing to the slider. Then, I extended the height of the slider mount to accommodate the second bearing.
+
+### PLA Material Failure
+This required a pretty extensive rework. With everything wired up and the unicorn going slowly up and down (per the spec), the square hold at the center of the crank (printed with PLA) warped enough that the motors shaft started slipping. In retrospect, given the weight of the head and the nature of PLA, this was, in fact, foreseeable.
+
+I needed a harder material; either metal or a different plastic (and preferably not too expensive). The solution: RC car parts and metal dowels! Then, updated the crank mount to accommodate 
+(1) a gear attached to the end of the motor shaft, 
+(2) a through-hole for the 2nd gear which will actually drive the crank, and
+(3) adaptation of the crank parts to attach to a 3rd gear
+![Rework Drive Train](images/rework_drive_train.jpg)
