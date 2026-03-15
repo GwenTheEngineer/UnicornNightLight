@@ -30,13 +30,14 @@ First, I needed a mechanism that could convert angular movement to linear moveme
 
 ### Electrical and Mechanical
 
-My hardware-adjacent and hobby background helped here. I hopped on amazon to find a low speed motor, appropriate transformers and adapters, and some LEDs and heat sinks. The complete BOM is listed below.
+My hardware-adjacent and hobby background helped here. I hopped on amazon to find a low speed motor, appropriate transformers and adapters, and some LEDs and heat sinks. The complete BOM is listed below (NOTE! s.t. change; will remove this note when the project works).
 
 Key considerations if you're shopping for your own parts:
 * Motor size and speed -- I wanted something small (to fit inside) and low speed, but high enough torque to deal with the weight of the head and friction of the crank.
 * Power supply -- wall sockets are AC; almost all hobby parts need DC
 * Match voltages -- motor calls for 3.3-5V; you may need to step down your voltage after you transform AC-->DC
-* Heat -- heat sinks help keep the temperature down. 
+* Heat -- heat sinks help keep the temperature down.
+* Materials! (see error log) Turns out after a few minutes, the PLA printing material deforms enough so the the outer shell stops going up and down (which is the whole point). Swapped to RC car pinion gears instead of directly driving the crank from the motor. 
 
 ## Detailed Mechanical Design
 
@@ -53,6 +54,7 @@ I'm an engineer, but not *this* kind of engineer (professionally, at least). I d
 * FreeCAD to ensure mechanical fit of the crank parts and motor mount and extending the slider / attaching it to the outer unicorn head shell
 * Tinkercad for final adjustments (adding a collar, subtracting the base, making the hole to attach the slider column to the unicorn shell)
 * FreeCAD for tweaking hole sizes to fit the motor and adding a through hole for the power cable to the base.
+* FreeCAD to extend the slider mount (by slicing and tiling the original) and add a second bearing to the extended slider column
 * ~~Blender to bisect the unicorn head in order to fit it on my printer (a Prusa Mini) -- See notes; this was a fun exercise but did not turn out to be necessary~~
 
 ### Play by Play
@@ -91,14 +93,24 @@ I rearranged the resulting objects into 2 collections, and duplicated the new fa
 
 After the motors came in, I measured the shaft diameter at 3mm, with a flat face about 2mm wide. I then proceeded to accidentally use 3mm as the radius when updating the hole in the crank. F. This had to be redone. ~~On the bright side I only had to fix the hole in the crank, because the default size for the part attached to the base was just about right (I'll file it down after it prints if it's an issue).~~
 
+#### Finalizing the Base
+We need to punch a hole for the power cord to go through!
+
+###### Rework #1 - crank orientation and hols sizing
 I went ahead and made all of the holes bigger (1.8-2mm radius; see parts for details) for a better fit and reduce the amount of sanding I'd need to do for the mechanism to be smooth.
 
-Finally, after the first print -- I realize the slider mount needed to be flipped (:facepalm:). In the original orientation, the motor shaft would have interfered with the rod of the crank. To accomplish this in FreeCAD without changing the position of the column relative to the base, I placed the slider+column part directly over the crank to fit part, then rotated and adjusted the parts until the columns were overlapping the the crank was flipped 180 degrees relative to the motor mount.
+The slider mount needed to be flipped (:facepalm:). In the original orientation, the motor shaft would have interfered with the rod of the crank. To accomplish this in FreeCAD without changing the position of the column relative to the base, I placed the slider+column part directly over the crank to fit part, then rotated and adjusted the parts until the columns were overlapping the the crank was flipped 180 degrees relative to the motor mount.
 
 I also extended the column by about 2cm to correct for the error of measuring the original height from slider's top position instead of the bottom. Oops.
 
-#### Finalizing the Base
-We need to punch a hole for the power cord to go through!
+###### Rework #2 - extend the slider mount; add 2nd bearing
+I extended the slider mount and add a second bearing to limit the moment induced by the unicorn head on the slider. When mounted, it was pulling the crank off of the motor shaft.
+
+###### Rework #3 - swap drive train; update parts accordingly
+This was a pretty extensive rework. With everything wired up and the unicorn going slowly up and down (per the spec), the square hold at the center of the crank (printed with PLA) warped enough that the motors shaft started slipping. In retrospect, given the weight of the head and the nature of PLA, this was, in fact, foreseeable.
+
+I needed a harder material; either metal or a different plastic (and preferably not too expensive). The solution: RC car parts!
+
 
 ## Resources
 
@@ -122,7 +134,7 @@ As of this writing I have not tested any of these, so the list may change. I'll 
 * Low speed (tiny) motors: https://amzn.to/4qAXlMr
 * LEDs: https://amzn.to/469XHT5
 * Heat sinks: https://amzn.to/3ZFIS6Y
-* DC PWM for motor or brightness control: https://amzn.to/46djYiJ
+* DC Voltage regulator: https://amzn.to/4qSYteF
 * DC Step down transformer: https://amzn.to/4tE2aY7
 * Universal AC Adapter: https://amzn.to/4azepfL
 
@@ -174,3 +186,9 @@ In further facepalm-inducing mistakes, I computed the column height (the column 
 Finally, the crank was actually backwards. The motor shaft and rod would interfere with each other. Oops.
 
 ![Unicorn Nightlght Assembly](images/all_the_errors.jpg)
+
+### Full Assembly Wobbles
+
+Hindsight is always 20/20. With the base assembled, I was initially please with the fit of the motor shaft into the crank. The mechanism moved up and down about as smoothly as one would expect from PLA parts. HOWEVER, when the shell was placed on top, there was enough of a moment to pull the crank off of the shaft, even with the addition of glue.
+
+This caused another re-work of the base (slider mount) and slider. I increased the width of the slider column so it sits closer to the mount, and added a second bearing to the slider. Then, I extended the height of the slider mount to accommodate the second bearing.
