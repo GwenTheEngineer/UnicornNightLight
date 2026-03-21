@@ -133,12 +133,19 @@ These are affiliate links to fund a small percentage of reaching my Balmer peak 
 
 As of this writing I have not tested any of these, so the list may change. I'll remove this comment when this is final.
 
-#### Electical Components
+#### Electrical Components
 * Low speed (tiny) motors: https://amzn.to/4qAXlMr
 * LEDs: https://amzn.to/469XHT5
 * Heat sinks: https://amzn.to/3ZFIS6Y
 * DC Low Voltage Speed Controller: https://amzn.to/4qSYteF
 * Universal AC Adapter: https://amzn.to/4azepfL
+
+#### Drive Train
+* Steel RC Car Gears (38T and 42T used): https://amzn.to/47XY2c8
+* Brass RC Car Gears (36T used): https://amzn.to/4bpC8AX
+* 3mm Diameter Dowel: https://amzn.to/4bpC8AX 
+
+(Same size in brass gears should be fine.)
 
 #### Useful Tools
 * Nail kit (useful for cleaning up support material from meshes): https://amzn.to/4s3IJGH
